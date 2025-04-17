@@ -12,6 +12,8 @@ public class Main {
 
         Thread thread1 = new MyThread();
         Thread thread2 = new Thread(new MyRunnable());
+        thread1.setDaemon(true);
+        thread2.setDaemon(true);
         thread1.start();
         thread2.start();
 
