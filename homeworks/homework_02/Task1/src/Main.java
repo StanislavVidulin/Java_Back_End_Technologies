@@ -10,8 +10,8 @@ public class Main {
 
         System.out.println("Main start");
 
-        Thread thread1 = new MyThread();
-        Thread thread2 = new Thread(new MyRunnable());
+        Thread thread1 = new MyThread(2, 2);
+        Thread thread2 = new MyThread(3, 3);
         thread1.setDaemon(true);
         thread2.setDaemon(true);
         thread1.start();
