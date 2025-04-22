@@ -1,6 +1,6 @@
 public class MyThread extends Thread{
     // volatile - переменная, которая может измениться из другого потока
-    // volatile вместо synchronized isFinish и setFinish
+    // volatile вместо synchronized в isFinish и setFinish
     private volatile boolean isFinish = false;
     private int counter = 0;
 
@@ -24,6 +24,9 @@ public class MyThread extends Thread{
         // while(!isFinish) - теперь знает из-за volatile
         while (!isFinish){
             counter++;
+//            if (counter%1000==0) {
+//                System.out.println(isFinish);
+//            }  -  работает без volatile
         }
         System.out.println("Thread finish " + counter);
     }

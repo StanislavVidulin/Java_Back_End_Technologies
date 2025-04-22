@@ -1,7 +1,7 @@
 public class Warehouse {
     private String title;
     private int value;
-    private Object lock = new Object();
+    private final Object lock = new Object();
 
     public Warehouse(String title) {
         this.title = title;

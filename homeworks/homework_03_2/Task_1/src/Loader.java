@@ -23,7 +23,7 @@ public class Loader implements Runnable {
         while (done < nBox) {
             int value = Math.min(nBox - done, capacity);
             warehouse.addValue(value);
-            done += capacity;
+            done += value;
         }
         synchronized (lock) {
             if (winner == null) {
