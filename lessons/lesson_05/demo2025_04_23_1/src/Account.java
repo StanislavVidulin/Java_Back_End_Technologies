@@ -1,4 +1,7 @@
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Account {
+    private ReentrantLock lock = new ReentrantLock();
     private final String iban;
     private final String owner;
     private double balance;
@@ -7,6 +10,10 @@ public class Account {
         this.iban = iban;
         this.owner = owner;
         this.balance = balance;
+    }
+
+    public ReentrantLock getLock() {
+        return lock;
     }
 
     public void deposit(double amount) {
