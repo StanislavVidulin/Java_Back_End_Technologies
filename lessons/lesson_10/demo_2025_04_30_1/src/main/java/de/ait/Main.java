@@ -28,6 +28,7 @@ public class Main {
         URI uri = UriComponentsBuilder.fromHttpUrl(urlEndPoint)
                 .queryParam("image_url", imgUrl)
                 .queryParam("language", language)
+                .queryParam("limit", 4)
                 .build()
                 .toUri();
 
