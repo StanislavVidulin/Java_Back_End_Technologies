@@ -15,25 +15,24 @@ public class RateCacheMapImpl implements RateCache {
 
     @Override
     public CachedRate getRate(String from, String to) {
-        String key = from+to;  // eurusd
+        String key = from + to;  // eurusd
         CachedRate cachedRate = map.get(key);
-        if (cachedRate!=null && isActual(cachedRate)){
-            return  cachedRate;
+        if (cachedRate != null && isActual(cachedRate)) {
+            return cachedRate;
         }
         return null;
     }
 
 
-
     private boolean isActual(CachedRate cachedRate) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime timeStamp = cachedRate.getTimeStamp();
-        return Duration.between(timeStamp,now).toMinutes()<= ACTUAL_TIME;
+        return Duration.between(timeStamp, now).toMinutes() <= ACTUAL_TIME;
     }
 
     @Override
     public void setRate(String from, String to, BigDecimal rate) {
-        String key = from+to;
-        map.put(key, new CachedRate(from,to,rate));
+        String key = from + to;
+        map.put(key, new CachedRate(from, to, rate));
     }
 }

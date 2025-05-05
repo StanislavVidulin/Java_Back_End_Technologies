@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.net.URI;
 
 public class ConverterFixerImpl implements Converter {
-    private static final String URL= "https://api.apilayer.com/fixer/convert";
+    private static final String URL = "https://api.apilayer.com/fixer/convert";
 
     private static final String TOKEN = "clapgFim8UjAIHpueTGgIVdeL7Vglyzi";  // свой ключ
     private static final RestTemplate REST_TEMPLATE = new RestTemplate();
@@ -25,7 +25,7 @@ public class ConverterFixerImpl implements Converter {
     public Conversion convert(String from, String to, double amount) {
         System.out.println("Fetch fixer API .....");
         from = from.toLowerCase().trim();
-        to=to.toLowerCase().trim();
+        to = to.toLowerCase().trim();
         HttpHeaders headers = new HttpHeaders();
         headers.add("apikey", TOKEN);
         try {
@@ -44,13 +44,13 @@ public class ConverterFixerImpl implements Converter {
             return result;
 
         } catch (HttpClientErrorException e) {  // 4xx - HttpClientErrorException
-            throw new RuntimeException("Client error: " + e.getStatusCode(),e);
+            throw new RuntimeException("Client error: " + e.getStatusCode(), e);
         } catch (HttpServerErrorException e) {  // 5xx - HttpServerErrorException
-            throw new RuntimeException("Server error: " + e.getStatusCode(),e);
+            throw new RuntimeException("Server error: " + e.getStatusCode(), e);
         } catch (ResourceAccessException e) {
-            throw new RuntimeException("Resource Access error: " + e.getMessage(),e);
-        } catch (Exception e){
-            throw new RuntimeException("Something gone wrong!",e);
+            throw new RuntimeException("Resource Access error: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException("Something gone wrong!", e);
         }
     }
 }

@@ -9,8 +9,8 @@ import java.math.RoundingMode;
 
 @AllArgsConstructor
 public class CachedConverterImpl implements Converter {
-   public Converter converter;
-   public RateCache cache;
+    public Converter converter;
+    public RateCache cache;
 
     /*
       1. обращаемся к кэш,
@@ -22,15 +22,15 @@ public class CachedConverterImpl implements Converter {
         from = from.toLowerCase().trim();
         to = to.toLowerCase().trim();
         CachedRate rate = cache.getRate(from, to); // обратились к кэш
-        if(rate!=null){
+        if (rate != null) {
             Conversion conversion = new Conversion(from, to, new BigDecimal(amount));
             BigDecimal amountTo = rate.getRate()  // умножаем BigDecimal на BigDecimal: rate*amount
-                                     .multiply(BigDecimal.valueOf(amount)).setScale(2, RoundingMode.HALF_UP);
+                    .multiply(BigDecimal.valueOf(amount)).setScale(2, RoundingMode.HALF_UP);
             conversion.setAmountTo(amountTo);
             return conversion;
         } else {
             Conversion result = converter.convert(from, to, amount);
-            cache.setRate(from,to,result.getRate());
+            cache.setRate(from, to, result.getRate());
             return result;
         }
 
