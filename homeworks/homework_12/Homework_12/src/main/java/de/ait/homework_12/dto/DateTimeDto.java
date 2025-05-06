@@ -9,7 +9,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Getter
-public class DataTimeDto {
+public class DateTimeDto {
     private String date;
     private String time;
 }
