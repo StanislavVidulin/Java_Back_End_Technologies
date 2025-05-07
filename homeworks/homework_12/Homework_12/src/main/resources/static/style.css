@@ -1,0 +1,13 @@
+#body {
+    background-color: #d1fff8;
+}
+
+#info {
+    font-size: 40px;
+    background-color: #fffc85;
+}
+
+#title {
+    justify-content: center;
+    font-size: 60px;
+}
