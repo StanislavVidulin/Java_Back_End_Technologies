@@ -1,5 +1,6 @@
 package de.ait.userapi.repository;
 
+import de.ait.userapi.exceptions.UserNotFoundException;
 import de.ait.userapi.model.User;
 
 import java.util.HashMap;
@@ -21,7 +22,12 @@ public class UserDB implements UserRepository{
     }
 
     public User findById(long id) {
-        return map.get(id);
+        User user = map.get(id);
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+        return user;
+//        return map.get(id);
     }
 
     @Override
