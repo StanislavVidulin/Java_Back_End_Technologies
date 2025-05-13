@@ -5,6 +5,7 @@ import de.ait.hw2025_04_12_tasks.model.Task;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -14,19 +15,20 @@ import java.util.Map;
 
 @Repository
 // 1-ый вариант
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
     // 2-ой вариант
 //    @Autowired
     private final TaskRepository taskRepository;
-
     private static Long lastId = 3L;
     private static Map<Long, Programmer> map = new HashMap<>();
 
-    //  указывает, что метод должен быть выполнен сразу после того,
+    //  Указывает, что метод должен быть выполнен сразу после того,
     //  как Spring внедрил все зависимости и инициализировал бин.
-    @PostConstruct
-    public void init(){
+//    @PostConstruct
+
+    public ProgrammerRepositoryMapImpl(@Qualifier("taskRepositoryMapImpl") TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
         map.put(1L, new Programmer(1L, "Jack"));
         map.put(2L, new Programmer(2L, "Nick"));
         map.put(3L, new Programmer(3L, "John"));

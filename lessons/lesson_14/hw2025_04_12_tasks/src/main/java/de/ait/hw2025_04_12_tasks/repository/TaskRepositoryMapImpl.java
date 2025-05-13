@@ -2,12 +2,30 @@ package de.ait.hw2025_04_12_tasks.repository;
 
 import de.ait.hw2025_04_12_tasks.model.Priority;
 import de.ait.hw2025_04_12_tasks.model.Task;
+import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
 
+// эти все аннотации делают класс бином
+//@Component
+
+//@Controller
+//@RestController
+//@Repository
+//@Service
+//@Configuration
+//@Bean
+
 @Repository
+@AllArgsConstructor
 public class TaskRepositoryMapImpl implements TaskRepository{
     private static HashMap<Long, Task> map = new HashMap<>();
     private static Long lastId = 5L;

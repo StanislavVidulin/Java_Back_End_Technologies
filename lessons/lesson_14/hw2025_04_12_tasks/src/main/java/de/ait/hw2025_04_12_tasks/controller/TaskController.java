@@ -11,17 +11,38 @@ import de.ait.hw2025_04_12_tasks.model.Task;
 import de.ait.hw2025_04_12_tasks.repository.TaskRepository;
 import de.ait.hw2025_04_12_tasks.repository.TaskRepositoryMapImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Scanner;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @RestController
 public class TaskController {
-    private TaskRepository repository;
+
+    private final TaskRepository repository;
+    private final Scanner scanner;
+
+//    //  внедрение зависимости через сеттер. Если  через сеттер, то final в поле нужно убрать
+//    @Autowired
+//    public void setScanner(Scanner scanner) {
+//        this.scanner = scanner;
+//    }
+
+    // если убрать @Qulifier и вторую имплементацию, то можно через ломбок (@AllArgsConstructor)
+    // через конструктор Spring по умолчанию добавляет @Autowired
+    public TaskController(@Qualifier("taskRepositoryMapImpl") TaskRepository repository, Scanner scanner) {
+        this.repository = repository;
+        this.scanner = scanner;
+    }
 
     @GetMapping("/tasks")
     public List<Task> getTasks() {
+        System.out.println("input");
+        String s = scanner.nextLine();
+        System.out.println(s);
         return repository.findAll();
     }
 
@@ -31,7 +52,7 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public Task createNewTask (@RequestBody Task task) {
+    public Task createNewTask(@RequestBody Task task) {
         System.out.println(task);
         return repository.save(task);
     }
