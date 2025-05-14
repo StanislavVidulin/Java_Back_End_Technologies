@@ -10,7 +10,7 @@ public class Hw20250412TasksApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(Hw20250412TasksApplication.class, args);
 //		context.getBean("restTemplateBuilder");
-		System.out.println("qwert");
+//		System.out.println("qwert");
 	}
 
 }

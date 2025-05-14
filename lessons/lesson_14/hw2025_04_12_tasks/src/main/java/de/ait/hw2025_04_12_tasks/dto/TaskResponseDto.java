@@ -1,16 +1,15 @@
-package de.ait.hw2025_04_12_tasks.model;
+package de.ait.hw2025_04_12_tasks.dto;
 
+import de.ait.hw2025_04_12_tasks.model.Priority;
 import lombok.*;
-
-//@Data - геттер, сеттер, конструктор, ту стринг, equals and hashcode
 
 @AllArgsConstructor
 @Getter
+@Setter
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "id")
-public class Task {
-    @Setter
+public class TaskResponseDto {
     private Long id;
     private String description;
     private Priority priority;
