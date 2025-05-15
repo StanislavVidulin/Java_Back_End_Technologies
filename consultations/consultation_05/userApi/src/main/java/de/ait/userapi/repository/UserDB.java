@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.List;
 
-@Repository
-public class UserDB implements UserRepository{
+//@Repository
+public class UserDB { //implements UserRepository
     private Long lastId = 6L;
     private static HashMap<Long, User> map = new HashMap<>();
     static {
@@ -33,7 +33,6 @@ public class UserDB implements UserRepository{
 //        return map.get(id);
     }
 
-    @Override
     public User save(User user) {
         user.setId(++lastId);
         map.put(user.getId(), user);
