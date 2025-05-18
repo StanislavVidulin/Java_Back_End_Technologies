@@ -1,7 +1,6 @@
 package de.ait.tasks.repository;
 
 import de.ait.tasks.model.Programmer;
-import de.ait.tasks.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

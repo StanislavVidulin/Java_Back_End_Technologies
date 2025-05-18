@@ -2,7 +2,6 @@ package de.ait.tasks.service;
 
 import de.ait.tasks.dto.ProgrammerRequestDto;
 import de.ait.tasks.dto.ProgrammerResponseDto;
-import de.ait.tasks.dto.TaskRequestDto;
 import de.ait.tasks.dto.TaskResponseDto;
 import de.ait.tasks.mappers.ProgrammerMapper;
 import de.ait.tasks.mappers.TaskMapper;
@@ -11,11 +10,9 @@ import de.ait.tasks.model.Task;
 import de.ait.tasks.repository.ProgrammerRepository;
 import de.ait.tasks.repository.TaskRepository;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

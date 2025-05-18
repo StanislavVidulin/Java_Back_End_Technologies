@@ -2,9 +2,7 @@ package de.ait.tasks.service;
 
 import de.ait.tasks.dto.ProgrammerRequestDto;
 import de.ait.tasks.dto.ProgrammerResponseDto;
-import de.ait.tasks.dto.TaskRequestDto;
 import de.ait.tasks.dto.TaskResponseDto;
-import de.ait.tasks.model.Task;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package de.ait.tasks.model;
 
-// Task {id, description (описание), priority (приоритет)}
-
 import jakarta.persistence.*;
 import lombok.*;
 

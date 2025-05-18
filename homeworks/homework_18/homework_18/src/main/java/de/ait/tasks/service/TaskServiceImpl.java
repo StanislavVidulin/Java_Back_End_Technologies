@@ -36,10 +36,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskResponseDto deleteTask(Long id) {
+    public void deleteTask(Long id) {
         Task task = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-        repository.deleteById(id);
-        return mapper.toResponseDto(task);
+        repository.deleteById(task.getId());
     }
 }

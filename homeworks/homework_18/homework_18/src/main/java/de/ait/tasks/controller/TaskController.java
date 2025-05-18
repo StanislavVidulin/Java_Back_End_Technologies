@@ -1,32 +1,21 @@
 package de.ait.tasks.controller;
 
-/*
-получить список всех задач
-получить задачу по id
-создать новую задачу
-удалить задачу № ...
- */
-
 import de.ait.tasks.dto.TaskRequestDto;
 import de.ait.tasks.dto.TaskResponseDto;
 import de.ait.tasks.repository.TaskRepository;
 import de.ait.tasks.service.TaskService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Scanner;
 
 @AllArgsConstructor
 @RestController
 public class TaskController {
     private final TaskService service;
-    private final TaskRepository repository; // repository temporary
 
     @GetMapping("/tasks")
     public ResponseEntity<List<TaskResponseDto> > getTasks(){
@@ -62,8 +51,8 @@ public class TaskController {
     }
 
     @DeleteMapping("/tasks/{id}")
-    public  ResponseEntity<TaskResponseDto> deleteTaskById(@PathVariable("id") Long id){
-        TaskResponseDto deletedTask = service.deleteTask(id);
-        return ResponseEntity.ofNullable(deletedTask);
+    public ResponseEntity<Void> deleteTaskById(@PathVariable("id") Long id){
+        service.deleteTask(id);
+        return ResponseEntity.noContent().build();
     }
 }
