@@ -1,5 +1,6 @@
 package de.ait.userapi.repository;
 
+import de.ait.userapi.model.Role;
 import de.ait.userapi.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +16,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     public List<User> findByNameOrEmail(String name, String email);
     public User save(User user);
     public Long countAllByName(String name);
+    public List<User> findByRolesContaining(Role role);
+    public Optional<User> findUserByEmail(String email);
 }

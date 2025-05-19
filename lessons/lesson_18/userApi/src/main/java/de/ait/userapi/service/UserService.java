@@ -11,4 +11,7 @@ public interface UserService {
 
     UserResponseDto addUser(UserRequestDto dto);
 
+    public List<UserResponseDto> getUsersByRole(String strRole);
+    public UserResponseDto assignRole(Long userId, String strRole);
+    public UserResponseDto removeRole(Long userId, String strRole);
 }
