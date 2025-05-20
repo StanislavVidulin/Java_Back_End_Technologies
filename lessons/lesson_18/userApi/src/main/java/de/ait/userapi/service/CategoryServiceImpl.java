@@ -29,6 +29,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public CategoryResponseDto save(CategoryRequestDto dto) {
+        System.out.println(dto);
         Category category = mapper.fromDto(dto);
         Category saved = repository.save(category);
         return mapper.toDto(saved);

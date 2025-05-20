@@ -9,6 +9,7 @@ import de.ait.userapi.repository.UserRepository;
 import de.ait.userapi.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +20,14 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
+    private final Logger logger;
     private final UserService service;
 
     // Get /users?role=admin - отбор по роли
     // Get /users            - все
     @GetMapping("/users")
     public List<UserResponseDto> getUsers(@RequestParam(name = "role", required = false) String role) {
+        logger.info(role);
         if (role == null || role.isBlank()) {
             return service.getAllUsers();
         } else {
@@ -39,6 +42,7 @@ public class UserController {
 
     @PostMapping("/users")
     public UserResponseDto addUser(@RequestBody UserRequestDto dto){
+        logger.info(dto);
         return service.addUser(dto);
     }
 

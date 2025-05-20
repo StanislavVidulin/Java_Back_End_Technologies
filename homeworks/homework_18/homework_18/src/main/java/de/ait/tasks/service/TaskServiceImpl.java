@@ -2,6 +2,7 @@ package de.ait.tasks.service;
 
 import de.ait.tasks.dto.TaskRequestDto;
 import de.ait.tasks.dto.TaskResponseDto;
+import de.ait.tasks.logging.Profiler;
 import de.ait.tasks.mappers.TaskMapper;
 import de.ait.tasks.model.Task;
 import de.ait.tasks.repository.TaskRepository;
@@ -16,7 +17,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository repository;
     private final TaskMapper mapper;
 
-
+    @Profiler
     @Override
     // return или значение TaskResponseDto или null
     public List<TaskResponseDto> getAllTasks() {
@@ -28,6 +29,7 @@ public class TaskServiceImpl implements TaskService {
         return mapper.toResponseDto(repository.findById(id).orElseThrow(() -> new RuntimeException("Task not found")));
     }
 
+    @Profiler
     @Override
     public TaskResponseDto createTask(TaskRequestDto taskDto) {
         Task task = mapper.fromRequestDto(taskDto);

@@ -2,6 +2,7 @@ package de.ait.tasks.controller;
 
 import de.ait.tasks.dto.TaskRequestDto;
 import de.ait.tasks.dto.TaskResponseDto;
+import de.ait.tasks.logging.Profiler;
 import de.ait.tasks.repository.TaskRepository;
 import de.ait.tasks.service.TaskService;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ public class TaskController {
     private final TaskService service;
     private final TaskRepository repository; // repository temporary
 
+    @Profiler
     @GetMapping("/tasks")
     public ResponseEntity<List<TaskResponseDto> > getTasks(){
         return ResponseEntity.ok(service.getAllTasks());
